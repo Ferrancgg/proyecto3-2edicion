@@ -24,39 +24,14 @@
 
     /* TEXT-COLORS */
     --fg-primary-text:var(--fg-color-1);
-    --fg-secundary-text:
-    --fg-tertiary-text:
-    --fg-spacial-text;
-    
-
+   
+  
     /* BORDER-COLORS */
 
     --fg-primary-border:2px solid var(var--fg-color-1);
     --fg-secundary-border:2px solid var(var--fg-color-2);
     --fg-tertiary-border:2px solid var(var--fg-color-3);
 
-    /* BORDER RADIUS */
---fg-primary-br:4px;
---fg-secundary-br:2px;
-
-/* SPACINGS */
---fg-margin-xs:10px;
---fg-margin-s:20px;
---fg-margin-m:30px;
---fg-margin-l:40px;
---fg-margin-xl:50px;
-
---fg-padding-xs:10px;
---fg-padding-s:20px;
---fg-padding-m:30px;
---fg-padding-l:40px;
---fg-padding-xl:50px;
-
---fg-gap-xs:10px;
---fg-gap-s:20px;
---fg-gap-m:30px;
---fg-gap-l:40px;
---fg-gap-xl:50px;
 
 
 }
@@ -112,7 +87,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 .logo{
   height: 100%;
   width: 100%;
-  /* background-color: black; */
+ 
 }
 
 
@@ -125,27 +100,18 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
   gap: 20px;
 }
 .li{
-  /* background-color: aqua; */
-  /* height: 30px; */
+
   display: flex;
   align-items: center;
   justify-content: center;
- /* width: 100px; */
-  /* border-radius: 20px; */
-  /* transition: all 1s; */
+ 
   cursor: pointer;
   object-fit: cover;
   text-align: center;
-/* border: 2px solid black; */
+
 
 }
 
-
-
-/* .a{
-  height: 100%;
-  width: 100%;
-} */
 .a{
   width: 100px;
   height: 30px;
@@ -156,11 +122,6 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
   align-items: center;
   justify-content: center;
 
-
-  /* background-color: bisque; */
-
-  
-  
 }
 .a:hover{
   background-color:var(--fg-color-4);
@@ -172,6 +133,14 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
       width: 80px;
       font-size: 12px;
 
+  }
+  .header{
+    justify-content: center;
+    gap: 10px;
+  }
+  .main{
+    text-align: center;
+    
   }
 }
 
@@ -198,7 +167,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
   gap: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  /* background-color: aqua; */
+
 
 
 }
@@ -217,7 +186,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 }
 
 .input-search{
-  /* background-color: aqua; */
+ 
   background-color: var(--fg-color-2);
   height: 100%;
   width: 100%;
@@ -226,13 +195,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
   
 }
 
-@media  screen and (max-width:640px){
 
-  .container-search{
-      display: none;
-  }
-  
-}
 
 @media screen and (min-width: 640px) and (max-width: 1280px) {
   .container-search {
@@ -260,7 +223,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
   gap: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  /* background-color: aqua; */
+
 
 
 }
@@ -279,7 +242,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 }
 
 .input-search{
-  /* background-color: aqua; */
+
   background-color: var(--fg-color-2);
   height: 100%;
   width: 100%;
@@ -288,13 +251,8 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
   
 }
 
-@media  screen and (max-width:640px){
 
-  .container-search{
-      display: none;
-  }
-  
-}
+
 
 @media screen and (min-width: 640px) and (max-width: 1280px) {
   .container-search {
@@ -304,21 +262,17 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 
 
 
-
-
-
 /* MAIN/////////// */
 
 .main{
   background-color: var( --fg-color-2);
   width: 100%;
-  min-height: 100svh;
+  min-height:100svh;
   padding: 15px;
-  /* display: grid;
+  display: flex;
+  
   align-items: center;
-  justify-items: center;
   justify-content: center;
-  align-content: center; */
 
 }
 
@@ -332,8 +286,7 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 
   width: 100%;
   margin: auto;
-  /* margin-top: 50px; */
-  /* max-width: 1200px; */
+ 
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(3, 400px);
   gap: 1%;
@@ -396,13 +349,18 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 
 @media  screen and (max-width:640px){
   .main{
-    height: 1750px;
+    
+    background-color:white;
+   
+
+    
+
   }
 .gallery{
-  
+ 
   padding-top: 45px;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 200px);
+  grid-template-rows: repeat(8, 120px);
 }
 
 
@@ -454,6 +412,3 @@ p,label,button,a,h1,h2,h3,h4,h5,h6{
 
 }
 
-@media screen and (min-width: 640px) and (max-width: 1280px) {
-  
-}

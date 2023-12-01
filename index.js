@@ -21,6 +21,9 @@ const inputSearch = document.createElement("input");
 const main = document.createElement("main");
 const gallery = document.createElement("div");
 
+const error = document.createElement("div");
+const errorH2 = document.createElement("h2");
+
 /////////
 
 header.classList = "header";
@@ -52,6 +55,10 @@ main.classList = "main";
 
 gallery.classList = "gallery";
 
+error.classList = "error-page";
+errorH2.classList = "text";
+errorH2.innerText = "No tengo resultados para esta palabra";
+
 ////////
 
 App.appendChild(header);
@@ -69,8 +76,10 @@ formContainerSearch.appendChild(inputSearch);
 divContainerInfo.appendChild(ulInfo);
 header.appendChild(divContainerInfo);
 
-main.appendChild(gallery);
+// main.appendChild(gallery);
 App.appendChild(main);
+
+error.appendChild(errorH2);
 
 // LOGICA///
 
@@ -101,15 +110,79 @@ for (const info of liInfos) {
 }
 
 //   aplicacamos la logica para buscar la palabra y mostrarla en el main
-formContainerSearch.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(inputSearch.value);
-  console.log(e);
+// formContainerSearch.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   console.log(inputSearch.value);
+//   console.log(e);
 
-  //////////
+//   const createImages = (images) => {
+//     console.log("me estoy creando desde CreateIMAGES")
+//     main.appendChild(gallery)
+//     console.log("creando imagen");
+//     if(images.length!==0){
+//       main.appendChild(gallery)
+//       for (let i = 1; i < 10; i++) {
+//       const img = document.createElement("img");
+//       img.classList = `img${i}`;
+//       img.src = images[i].urls.thumb;
+//       img.alt = images[i].alt_description;
+//       gallery.appendChild(img);
+//     }
+//     }else{
+//       console.log("no estoy teniendo resultados desde createelemnts")
+//     }
 
-  const createImages = (images) => {
-    console.log("creando imagen");
+//   };
+//   const printErrorPage=()=>{
+//     console.log("soy error desde componenete")
+//     console.log(main)
+//     console.log(error)
+//     // createImages([])
+//     main.appendChild(error)
+
+//   }
+
+//   const ApiKey = "vTA492gjqs13MBsTQKe-jb5KJTBaJWCHkCemi1MZPgk";
+//   const endPoint = "https://api.unsplash.com/search/photos";
+
+//   const getImages = async (query) => {
+//     try {
+//       let response = await fetch(
+//         endPoint + "?query=" + query + "&client_id=" + ApiKey
+//       );
+//       let jsonResonse = await response.json();
+//       let imagesList = await jsonResonse.results;
+
+//       console.log(imagesList);
+//       createImages(imagesList);
+//     } catch {
+//       createImages([])
+//       console.log(error)
+//       printErrorPage(error)
+//       console.log("estoy siendo un error");
+//       // const error = document.createElement("div");
+//       // const h1 = document.createElement("h1");
+
+//       // error.classList = "error";
+//       // h1.classList = "h1";
+
+//       // h1.innerText =
+//       //   "Lo sentimos pero no tenemos imagenes para esta busqueda....";
+
+//       // error.appendChild(h1);
+//       // main.appendChild(error);
+//     }
+//   };
+//   getImages(inputSearch.value);
+//   // inputSearch.value=""
+// });
+
+const createImages = (images) => {
+  console.log("me estoy creando desde CreateIMAGES");
+  // main.appendChild(gallery);
+  console.log("creando imagen");
+  if (images.length !== 0) {
+    main.appendChild(gallery);
     for (let i = 1; i < 10; i++) {
       const img = document.createElement("img");
       img.classList = `img${i}`;
@@ -117,12 +190,22 @@ formContainerSearch.addEventListener("submit", (e) => {
       img.alt = images[i].alt_description;
       gallery.appendChild(img);
     }
-  };
+  } else {
+    printErrorPage()
+    console.log("no estoy teniendo resultados desde createelemnts");
+  }
+};
 
-  const ApiKey = "vTA492gjqs13MBsTQKe-jb5KJTBaJWCHkCemi1MZPgk";
-  const endPoint = "https://api.unsplash.com/search/photos";
+const printErrorPage = () => {
+  console.log("soy error desde componenete");
+  console.log(main);
+  console.log(error);
+  // createImages([])
+  main.appendChild(error);
+};
 
-  const getImages = async (query) => {
+const getImages = async (query) => {
+  try {
     let response = await fetch(
       endPoint + "?query=" + query + "&client_id=" + ApiKey
     );
@@ -131,8 +214,24 @@ formContainerSearch.addEventListener("submit", (e) => {
 
     console.log(imagesList);
     createImages(imagesList);
-  };
-  getImages(inputSearch.value);
-  inputSearch.value=""
+  } catch {
+    createImages([]);
+    console.log(error);
+    printErrorPage(error);
+    console.log("estoy siendo un error");
+  }
+};
 
+const ApiKey = "vTA492gjqs13MBsTQKe-jb5KJTBaJWCHkCemi1MZPgk";
+const endPoint = "https://api.unsplash.com/search/photos";
+
+formContainerSearch.addEventListener("submit", (e) => {
+  main.innerHTML=`<div></div>`
+  e.preventDefault();
+  console.log(inputSearch.value);
+  console.log(e);
+  console.log(main)
+  console.log(gallery)
+
+  getImages(inputSearch.value);
 });
